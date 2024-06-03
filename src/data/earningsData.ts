@@ -1,8 +1,8 @@
-type arrayExpenses = expense[];
-type expense = { id: number; date: string; amount: number };
+type arrayEarnings = earning[];
+type earning = { id: number; date: string; amount: number };
 
-const expensesData = () => {
-  const expenses: arrayExpenses = [];
+const earningsData = () => {
+  const earnings: arrayEarnings = [];
   const firstDate = new Date('2024-05-01');
   const today = new Date();
   const days = Math.floor((today.getTime() - firstDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
@@ -11,15 +11,15 @@ const expensesData = () => {
     const actualDate = new Date(firstDate);
     actualDate.setDate(firstDate.getDate() + i);
 
-    const dailyExpense: number = Math.floor(Math.random() * 500) + 50;
-    const expenseObj: expense = {
+    const dailyEarning: number = Math.floor(Math.random() * 1000) + 50;
+    const earningObj: earning = {
       id: i,
       date: actualDate.toISOString().split('T')[0],
-      amount: dailyExpense
+      amount: dailyEarning
     }
-    expenses.unshift(expenseObj);
+    earnings.unshift(earningObj);
   }
-  return expenses;
+  return earnings;
 }
 
-export default expensesData;
+export default earningsData;
