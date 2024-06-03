@@ -11,7 +11,7 @@ const expensesDataGenerator = () => {
     const actualDate = new Date(firstDate);
     actualDate.setDate(firstDate.getDate() + i);
 
-    const dailyExpense: number = Math.floor(Math.random() * 500) + 50;
+    const dailyExpense: number = Math.floor(Math.random() * 750) + 50;
     const expenseObj: expense = {
       id: i,
       date: actualDate.toISOString().split('T')[0],
