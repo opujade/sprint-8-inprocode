@@ -1,6 +1,6 @@
 import { arrayData, data } from "../types/types";
 
-const expensesDataGenerator = () => {
+const generateExpensesData = () => {
   const expenses: arrayData = [];
   const firstDate = new Date('2024-05-01');
   const today = new Date();
@@ -21,4 +21,4 @@ const expensesDataGenerator = () => {
   return expenses;
 }
 
-export default expensesDataGenerator;
+export default generateExpensesData;
