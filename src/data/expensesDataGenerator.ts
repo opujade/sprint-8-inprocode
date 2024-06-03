@@ -1,8 +1,7 @@
-type arrayExpenses = expense[];
-interface expense { id: number; date: string; amount: number };
+import { arrayData, data } from "../types/types";
 
 const expensesDataGenerator = () => {
-  const expenses: arrayExpenses = [];
+  const expenses: arrayData = [];
   const firstDate = new Date('2024-05-01');
   const today = new Date();
   const days = Math.floor((today.getTime() - firstDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
@@ -12,7 +11,7 @@ const expensesDataGenerator = () => {
     actualDate.setDate(firstDate.getDate() + i);
 
     const dailyExpense: number = Math.floor(Math.random() * 750) + 50;
-    const expenseObj: expense = {
+    const expenseObj: data = {
       id: i,
       date: actualDate.toISOString().split('T')[0],
       amount: dailyExpense

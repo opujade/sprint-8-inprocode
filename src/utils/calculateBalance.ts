@@ -1,9 +1,6 @@
-import expensesDataGenerator from "../data/expensesDataGenerator"
-import earningsDataGenerator from "../data/earningsDataGenerator";
+import { arrayData } from "../types/types";
 
-export const calculateBalance = () => {
-  const earnings = earningsDataGenerator();
-  const expenses = expensesDataGenerator();
+export const calculateBalance = (earnings: arrayData, expenses: arrayData) => {
   let totalEarnings = 0;
   let totalExpenses = 0;
   for (let i = 0; i < earnings.length; i++) {

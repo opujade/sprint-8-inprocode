@@ -1,8 +1,7 @@
-type arrayEarnings = earning[];
-interface earning { id: number; date: string; amount: number };
+import { arrayData, data } from "../types/types";
 
-const earningsDataGenerator = (): arrayEarnings => {
-  const earnings: arrayEarnings = [];
+const earningsDataGenerator = (): arrayData => {
+  const earnings: arrayData = [];
   const firstDate = new Date('2024-05-01');
   const today = new Date();
   const days = Math.floor((today.getTime() - firstDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
@@ -12,7 +11,7 @@ const earningsDataGenerator = (): arrayEarnings => {
     actualDate.setDate(firstDate.getDate() + i);
 
     const dailyEarning: number = Math.floor(Math.random() * 1000) + 50;
-    const earningObj: earning = {
+    const earningObj: data = {
       id: i,
       date: actualDate.toISOString().split('T')[0],
       amount: dailyEarning
