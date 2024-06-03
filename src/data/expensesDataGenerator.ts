@@ -1,7 +1,7 @@
 type arrayExpenses = expense[];
-type expense = { id: number; date: string; amount: number };
+interface expense { id: number; date: string; amount: number };
 
-const expensesData = () => {
+const expensesDataGenerator = () => {
   const expenses: arrayExpenses = [];
   const firstDate = new Date('2024-05-01');
   const today = new Date();
@@ -22,4 +22,4 @@ const expensesData = () => {
   return expenses;
 }
 
-export default expensesData;
+export default expensesDataGenerator;

@@ -1,7 +1,7 @@
 type arrayEarnings = earning[];
-type earning = { id: number; date: string; amount: number };
+interface earning { id: number; date: string; amount: number };
 
-const earningsData = () => {
+const earningsDataGenerator = (): arrayEarnings => {
   const earnings: arrayEarnings = [];
   const firstDate = new Date('2024-05-01');
   const today = new Date();
@@ -22,4 +22,4 @@ const earningsData = () => {
   return earnings;
 }
 
-export default earningsData;
+export default earningsDataGenerator;
