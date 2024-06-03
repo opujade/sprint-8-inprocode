@@ -1,7 +1,6 @@
-import { useContext } from "react";
-import { BalanceContext } from "../context/BalanceProvider";
+import { useBalanceContext } from "../context/BalanceProvider";
 
 export const TotalBalance = () => {
-	const balance = useContext(BalanceContext);
-	return <div>Total Balance: {balance}€</div>;
+	const { balance } = useBalanceContext();
+	return <div>Balance: {balance}€</div>;
 };
