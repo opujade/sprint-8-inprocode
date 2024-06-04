@@ -9,7 +9,7 @@ const App = (): JSX.Element => {
     <>
       <BalanceProvider>
         <ThemeProvider>
-          <div className="min-h-screen flex flex-col justify-center items-center">
+          <div className="w-1/3 mx-auto min-h-screen flex flex-col justify-center items-center">
             <LangSwitcher />
             <MainInfo />
             <TotalBalance />

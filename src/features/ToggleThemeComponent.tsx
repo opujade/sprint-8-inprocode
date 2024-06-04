@@ -5,7 +5,11 @@ export const ToggleThemeComponent = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <label className="swap swap-rotate">
+    <label
+      className={`swap swap-rotate ${
+        theme === "dark" ? "hover:bg-black" : "hover:bg-white"
+      } hover:bg-opacity-10 hover:scale-105 rounded-full duration-200`}
+    >
       <input
         checked={theme === "light"}
         type="checkbox"
