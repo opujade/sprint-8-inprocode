@@ -2,5 +2,5 @@ import { useBalanceContext } from "../context/BalanceProvider";
 
 export const TotalBalance = () => {
   const { balance } = useBalanceContext();
-  return <div>Balance: {balance}€</div>;
+  return <h2>Balance: {balance}€</h2>;
 };
