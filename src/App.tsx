@@ -11,8 +11,8 @@ const App = (): JSX.Element => {
         <ThemeProvider>
           <div className="w-1/3 mx-auto min-h-screen flex flex-col justify-center items-center">
             <LangSwitcher />
-            <MainInfo />
             <TotalBalance />
+            <MainInfo />
           </div>
         </ThemeProvider>
       </BalanceProvider>
