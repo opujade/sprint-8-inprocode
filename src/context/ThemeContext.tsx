@@ -1,21 +1,22 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { ProviderProps } from "../types/types";
+import { ThemeContextInterface } from "../types/types";
 
-const ThemeContext = createContext<void | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextInterface>({
+  theme: "light",
+  toggleTheme: undefined,
+});
 
 export const ThemeProvider = ({ children }: ProviderProps) => {
   const [theme, setTheme] = useState<string>("light");
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    document.querySelector("html")?.setAttribute("data-theme", theme);
   };
 
-  useEffect(() => {
-    document.querySelector("html")?.setAttribute("data-theme", theme);
-  }, [theme]);
-
   return (
-    <ThemeContext.Provider value={toggleTheme()}>
+    <ThemeContext.Provider value={{ theme: theme, toggleTheme: toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
