@@ -1,3 +1,3 @@
 export const LangSwitcher = () => {
-  return <div>LangSwitcher</div>;
+  return <h2>LangSwitcher</h2>;
 };
