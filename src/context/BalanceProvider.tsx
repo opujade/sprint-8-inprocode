@@ -1,50 +1,74 @@
 import { createContext, useContext, useState } from "react";
 import { calculateBalance } from "../utils/calculateBalance";
 import {
-  BalanceContextInterface,
-  ProviderProps,
-  arrayData,
+	BalanceContextInterface,
+	ProviderProps,
+	arrayData,
 } from "../types/types";
 import generateEarningsData from "../data/generateEarningsData";
 import generateExpensesData from "../data/generateExpensesData";
 import { calculatePercentageFirstTwoElements } from "../utils/calculatePercentageFirstTwoElements";
-import { formatChartData } from "../utils/formatChartData";
 
 const BalanceContext = createContext<BalanceContextInterface | undefined>(
-  undefined
+	undefined
 );
 
 export const useBalanceContext = () => {
-  const context = useContext(BalanceContext);
-  if (!context) {
-    throw new Error("useBalanceContext must be used within a BalanceProvider");
-  }
-  return context;
+	const context = useContext(BalanceContext);
+	if (!context) {
+		throw new Error("useBalanceContext must be used within a BalanceProvider");
+	}
+	return context;
 };
 
 export const BalanceProvider = ({ children }: ProviderProps) => {
-  const [earningsMock] = useState<arrayData>(generateEarningsData());
-  const [expensesMock] = useState<arrayData>(generateExpensesData());
-  console.log(expensesMock);
-  console.log(earningsMock);
-  const balance = calculateBalance(earningsMock, expensesMock);
-  const todaysExpenses = expensesMock[0].amount;
-  const percentageYesterdayToday =
-    calculatePercentageFirstTwoElements(expensesMock);
-  const amountExpenses = expensesMock.map((expense) => expense.amount);
-  const dates = expensesMock.map((expense) => expense.date);
-  const expensesChartData = formatChartData(amountExpenses, dates, "Expenses");
+	// Generates expenses and earnings
+	const [earningsMock] = useState<arrayData>(generateEarningsData());
+	const [expensesMock] = useState<arrayData>(generateExpensesData());
+	console.log(expensesMock);
+	// Calculates expenses info
+	const balance = calculateBalance(earningsMock, expensesMock);
+	const todaysExpenses = expensesMock[expensesMock.length - 1].amount;
+	const percentageYesterdayToday =
+		calculatePercentageFirstTwoElements(expensesMock);
+	const expensesData = expensesMock
+		.slice(expensesMock.length - 7, expensesMock.length)
+		.map((e) => e.amount);
+	console.log(expensesData);
+	// BarChart
+	const weekDays = [
+		"Monday",
+		"Tuesday",
+		"Wednesady",
+		"Thursday",
+		"Friday",
+		"Saturday",
+		"Sunday",
+	];
+	const expensesChartData = {
+		datasets: [
+			{
+				label: "Expenses",
+				data: expensesData,
+				hoverBackgroundColor: "#75b5be",
+				backgroundColor: "#ec765c",
+				borderSkipped: false,
+				borderRadius: 5,
+			},
+		],
+		labels: weekDays,
+	};
 
-  return (
-    <BalanceContext.Provider
-      value={{
-        balance,
-        todaysExpenses,
-        percentageYesterdayToday,
-        expensesChartData,
-      }}
-    >
-      {children}
-    </BalanceContext.Provider>
-  );
+	return (
+		<BalanceContext.Provider
+			value={{
+				balance,
+				todaysExpenses,
+				percentageYesterdayToday,
+				expensesChartData,
+			}}
+		>
+			{children}
+		</BalanceContext.Provider>
+	);
 };

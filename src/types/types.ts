@@ -5,23 +5,19 @@ export type ProviderProps = {
   children: React.ReactNode;
 };
 
-export type arrayData = data[];
 export interface data {
   id: number;
   date: string;
   amount: number;
 }
 
-export interface chartData {
-  labels: string[];
-  datasets: {}[];
-}
+export type arrayData = data[];
 
 export interface BalanceContextInterface {
   balance: number;
   todaysExpenses: number;
   percentageYesterdayToday: number;
-  expensesChartData: ChartData;
+  expensesChartData: ChartData<"bar">;
 }
 
 export interface ThemeContextInterface {
