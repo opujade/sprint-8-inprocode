@@ -2,7 +2,7 @@ import { arrayData, data } from "../types/types";
 
 const generateExpensesData = () => {
   const expenses: arrayData = [];
-  const firstDate = new Date("2024-05-01");
+  const firstDate = new Date("2024-01-01");
   const today = new Date();
   const days =
     Math.floor(
@@ -19,9 +19,8 @@ const generateExpensesData = () => {
       date: actualDate.toISOString().split("T")[0],
       amount: dailyExpense,
     };
-    expenses.unshift(expenseObj);
+    expenses.push(expenseObj);
   }
-  console.log(expenses);
   return expenses;
 };
 

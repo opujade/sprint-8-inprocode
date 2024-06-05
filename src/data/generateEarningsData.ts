@@ -2,7 +2,7 @@ import { arrayData, data } from "../types/types";
 
 const earningsDataGenerator = (): arrayData => {
   const earnings: arrayData = [];
-  const firstDate = new Date("2024-05-01");
+  const firstDate = new Date("2024-01-01");
   const today = new Date();
   const days =
     Math.floor(
@@ -19,7 +19,7 @@ const earningsDataGenerator = (): arrayData => {
       date: actualDate.toISOString().split("T")[0],
       amount: dailyEarning,
     };
-    earnings.unshift(earningObj);
+    earnings.push(earningObj);
   }
   return earnings;
 };
