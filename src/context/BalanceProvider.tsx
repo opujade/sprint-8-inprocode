@@ -25,8 +25,6 @@ export const useBalanceContext = () => {
 export const BalanceProvider = ({ children }: ProviderProps) => {
   const [earningsMock] = useState<arrayData>(generateEarningsData());
   const [expensesMock] = useState<arrayData>(generateExpensesData());
-  console.log(expensesMock);
-  console.log(earningsMock);
   const balance = calculateBalance(earningsMock, expensesMock);
   const todaysExpenses = expensesMock[0].amount;
   const percentageYesterdayToday =
