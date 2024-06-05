@@ -1,4 +1,3 @@
-import { ChartData } from "chart.js";
 import React from "react";
 
 export type ProviderProps = {
@@ -7,7 +6,7 @@ export type ProviderProps = {
 
 export interface data {
   id: number;
-  date: string;
+  date: Date;
   amount: number;
 }
 
@@ -15,9 +14,11 @@ export type arrayData = data[];
 
 export interface BalanceContextInterface {
   balance: number;
-  todaysExpenses: number;
   percentageYesterdayToday: number;
-  expensesChartData: ChartData<"bar">;
+  expensesData: number[];
+  handleWeek: ((arrow: boolean) => void)
+  expensesMock: arrayData;
+  week: number;
 }
 
 export interface ThemeContextInterface {

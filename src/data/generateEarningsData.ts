@@ -13,10 +13,10 @@ const earningsDataGenerator = (): arrayData => {
     const actualDate = new Date(firstDate);
     actualDate.setDate(firstDate.getDate() + i);
 
-    const dailyEarning: number = Math.floor(Math.random() * 1000);
+    const dailyEarning: number = Math.floor(Math.random() * 750 + 250);
     const earningObj: data = {
       id: i,
-      date: actualDate.toISOString().split("T")[0],
+      date: actualDate,
       amount: dailyEarning,
     };
     earnings.push(earningObj);
