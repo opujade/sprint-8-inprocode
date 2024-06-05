@@ -1,11 +1,9 @@
-import { PluginChartOptions, TooltipItem } from "chart.js";
-import { ContextProxy } from "chart.js/helpers";
+import { BarOptions, ChartOptions, GridLineOptions, PluginChartOptions, TooltipItem } from "chart.js";
 
-export const options: PluginChartOptions<"bar"> = {
+export const options: BarOptions | PluginChartOptions<"bar"> | ChartOptions | GridLineOptions = {
   plugins: {
     legend: {
       display: false,
-      position: "center",
     },
     tooltip: {
       callbacks: {
@@ -30,10 +28,9 @@ export const options: PluginChartOptions<"bar"> = {
     y: {
       grid: {
         lineWidth: 2,
-        drawBorder: false,
         drawTicks: false,
         offset: false,
-        color: (context: ContextProxy) => {
+        color: (context) => {
           return context.tick.value === 0 || context.tick.value === 500
             ? "rgb(209, 213, 219)"
             : "transparent";
@@ -50,8 +47,7 @@ export const options: PluginChartOptions<"bar"> = {
           weight: "bold",
         },
         color: "rgb(209, 213, 219)",
-        callback: function (value: number) {
-          // Mostrar solo los ticks en 0 y 500
+        callback: function (value) {
           if (value === 0 || value === 500) {
             return value.toString();
           }
