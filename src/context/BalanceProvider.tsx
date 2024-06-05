@@ -22,17 +22,20 @@ export const useBalanceContext = () => {
 };
 
 export const BalanceProvider = ({ children }: ProviderProps) => {
+	// Generates expenses and earnings
 	const [earningsMock] = useState<arrayData>(generateEarningsData());
 	const [expensesMock] = useState<arrayData>(generateExpensesData());
 	console.log(expensesMock);
+	// Calculates expenses info
 	const balance = calculateBalance(earningsMock, expensesMock);
 	const todaysExpenses = expensesMock[expensesMock.length - 1].amount;
 	const percentageYesterdayToday =
 		calculatePercentageFirstTwoElements(expensesMock);
-	const amountExpenses = expensesMock
+	const expensesData = expensesMock
 		.slice(expensesMock.length - 7, expensesMock.length)
 		.map((e) => e.amount);
-	console.log(amountExpenses);
+	console.log(expensesData);
+	// BarChart
 	const weekDays = [
 		"Monday",
 		"Tuesday",
@@ -46,7 +49,7 @@ export const BalanceProvider = ({ children }: ProviderProps) => {
 		datasets: [
 			{
 				label: "Expenses",
-				data: amountExpenses,
+				data: expensesData,
 				hoverBackgroundColor: "#75b5be",
 				backgroundColor: "#ec765c",
 				borderSkipped: false,
