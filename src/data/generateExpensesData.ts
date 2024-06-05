@@ -16,7 +16,9 @@ const generateExpensesData = () => {
     const dailyExpense: number = Math.floor(Math.random() * 950);
     const expenseObj: data = {
       id: i,
-      date: actualDate.toISOString().split("T")[0],
+      date: actualDate,
+      //.toISOString(),
+      //.split("T")[0],
       amount: dailyExpense,
     };
     expenses.push(expenseObj);

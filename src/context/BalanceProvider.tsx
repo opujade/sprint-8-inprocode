@@ -25,7 +25,13 @@ export const BalanceProvider = ({ children }: ProviderProps) => {
 	// Generates expenses and earnings
 	const [earningsMock] = useState<arrayData>(generateEarningsData());
 	const [expensesMock] = useState<arrayData>(generateExpensesData());
+	const [week, setWeek] = useState({
+		initialDate: expensesMock[expensesMock.length - 1].date,
+		finalDate: expensesMock[expensesMock.length - 7].date,
+	});
+	const weekDay = expensesMock[expensesMock.length - 1].date;
 	console.log(expensesMock);
+	console.log(weekDay);
 	// Calculates expenses info
 	const balance = calculateBalance(earningsMock, expensesMock);
 	const todaysExpenses = expensesMock[expensesMock.length - 1].amount;

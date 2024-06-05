@@ -16,7 +16,7 @@ const earningsDataGenerator = (): arrayData => {
     const dailyEarning: number = Math.floor(Math.random() * 1000);
     const earningObj: data = {
       id: i,
-      date: actualDate.toISOString().split("T")[0],
+      date: actualDate,
       amount: dailyEarning,
     };
     earnings.push(earningObj);

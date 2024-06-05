@@ -7,7 +7,7 @@ export type ProviderProps = {
 
 export interface data {
   id: number;
-  date: string;
+  date: Date;
   amount: number;
 }
 
