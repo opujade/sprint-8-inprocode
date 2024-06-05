@@ -8,7 +8,6 @@ import {
 import generateEarningsData from "../data/generateEarningsData";
 import generateExpensesData from "../data/generateExpensesData";
 import { calculatePercentageFirstTwoElements } from "../utils/calculatePercentageFirstTwoElements";
-import { formatChartData } from "../utils/formatChartData";
 
 const BalanceContext = createContext<BalanceContextInterface | undefined>(
   undefined
@@ -25,13 +24,34 @@ export const useBalanceContext = () => {
 export const BalanceProvider = ({ children }: ProviderProps) => {
   const [earningsMock] = useState<arrayData>(generateEarningsData());
   const [expensesMock] = useState<arrayData>(generateExpensesData());
+  console.log(expensesMock);
   const balance = calculateBalance(earningsMock, expensesMock);
   const todaysExpenses = expensesMock[0].amount;
   const percentageYesterdayToday =
     calculatePercentageFirstTwoElements(expensesMock);
-  const amountExpenses = expensesMock.map((expense) => expense.amount);
-  const dates = expensesMock.map((expense) => expense.date);
-  const expensesChartData = formatChartData(amountExpenses, dates, "Expenses");
+  const amountExpenses = expensesMock.slice(0, 7).map((e) => e.amount);
+  const weekDays = [
+    "Monday",
+    "Tuesday",
+    "Wednesady",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  const expensesChartData = {
+    datasets: [
+      {
+        label: "Expenses",
+        data: amountExpenses,
+        hoverBackgroundColor: "#75b5be",
+        backgroundColor: "#ec765c",
+        borderSkipped: false,
+        borderRadius: 5,
+      },
+    ],
+    labels: weekDays,
+  };
 
   return (
     <BalanceContext.Provider

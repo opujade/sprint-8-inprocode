@@ -21,7 +21,7 @@ export interface BalanceContextInterface {
   balance: number;
   todaysExpenses: number;
   percentageYesterdayToday: number;
-  expensesChartData: ChartData;
+  expensesChartData: ChartData<"bar">;
 }
 
 export interface ThemeContextInterface {

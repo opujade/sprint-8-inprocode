@@ -1,12 +1,14 @@
 import { useBalanceContext } from "../context/BalanceProvider";
+import { WeeklyBalanceBarChart } from "./charts/BarsChart";
 
 export const MainInfo = () => {
   const { todaysExpenses, percentageYesterdayToday } = useBalanceContext();
   return (
     <div className="bg-white rounded-xl p-5 w-full text-black">
-      <div className="flex justify-between">
+      <h2 className="text-xl font-bold">Expenses - Last Week</h2>
+      <WeeklyBalanceBarChart />
+      <div className="flex justify-between border-t pt-5">
         <div>
-          <h2 className="text-xl font-bold">Expenses - Last Week</h2>
           <p className="text-gray-300 font-semibold text-xs">
             Today's Expenses:
           </p>
