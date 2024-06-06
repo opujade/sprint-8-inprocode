@@ -1,3 +1,7 @@
 {
-  "total-balance": "Total Balance!"
+  "total-balance": "Total Balance",
+  "expenses": "Expenses",
+  "todays-expenses": "Today's Expenses",
+  "compared-to-yesterday": "compared to yesterday",
+  "this-week": "This week"
 }

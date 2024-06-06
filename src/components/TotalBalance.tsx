@@ -8,7 +8,7 @@ export const TotalBalance = () => {
   return (
     <div className="flex justify-between py-4 px-5 bg-primary w-full rounded-2xl text-white my-5">
       <div>
-        <p className="text-sm my-1">{t("total-balance")}</p>
+        <p className="text-sm my-1">{t("total-balance")}:</p>
         <p className="font-semibold text-xl my-1">{balance}€</p>
       </div>
       <div className="flex justify-center items-center gap-2 text-white">
