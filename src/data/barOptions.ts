@@ -1,6 +1,6 @@
-import { BarOptions, ChartOptions, GridLineOptions, PluginChartOptions, TooltipItem } from "chart.js";
+import { ChartOptions, TooltipItem } from "chart.js";
 
-export const options: BarOptions | PluginChartOptions<"bar"> | ChartOptions | GridLineOptions | undefined = {
+export const options: ChartOptions<"bar"> | undefined = {
   plugins: {
     legend: {
       display: false,
