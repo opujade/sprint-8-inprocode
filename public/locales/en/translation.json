@@ -3,5 +3,6 @@
   "expenses": "Expenses",
   "todays-expenses": "Today's Expenses",
   "compared-to-yesterday": "compared to yesterday",
-  "this-week": "This week"
+  "this-week": "This week",
+  "loading": "Loading"
 }

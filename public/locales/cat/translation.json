@@ -3,5 +3,6 @@
   "expenses": "Despeses",
   "todays-expenses": "Despeses avui",
   "compared-to-yesterday": "respecte ahir",
-  "this-week": "Aquesta setmana"
+  "this-week": "Aquesta setmana",
+  "loading": "Carregant"
 }
